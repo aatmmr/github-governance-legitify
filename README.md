@@ -29,10 +29,14 @@ The required PAT need the following scopes:
 - `read:repo_hook`
 - `repo`
 
-The workflow expects a PAT called `GH_PAT` to be available as a repository secret.
+The workflow expects a PAT called `GH_PAT` to be available as a repository secret. Please note that Fine-Grained PATs are not supported yet.
 
-> [!IMPORTANT]
-> Depending on the target of scanning, the scopes can vary. Please check the [requirements](https://github.com/legit-labs/legitify?tab=readme-ov-file#requirements)
+#### Scopes
 
+Depending on the target of scanning, the scopes can vary. Please check the [requirements](https://github.com/legit-labs/legitify?tab=readme-ov-file#requirements).
 
+For example, if only a repository is scanned, the following scopes are sufficient: `read:repo_hook, repo`
 
+## Results
+
+Results can be shown in a variety of ways. The most useful way ist to push them to the Security reports of the repsitory as Legitify supports the SAST format as output. Other possibilities are to create issues, job summaries or send the content to an external system using the job summaries output content.
