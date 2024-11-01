@@ -1,0 +1,34 @@
+name: Legitify Scan (GH App)
+
+on: [workflow_dispatch]
+
+jobs:
+  scan-repository:
+    name: Scan Repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v2
+        with:
+          application_id: ${{ vars.GH_APP_ID_GOVERNOR }}
+          application_private_key: ${{ secrets.GH_APP_KEY_GOVERNOR }}
+          organization: ${{ vars.ORGANIZATION }}
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Scan Repo
+        uses: Legit-Labs/legitify@b814483c588aefad01b33e921008e73352639277
+        with:
+          github_token: ${{ steps.get_workflow_token.outputs.token }}
+          analyze_self_only: "true"
+      - name: Print Files
+        if: failure()
+        run: ls
+      - name: Print Error Log
+        if: failure()
+        run: cat error.log
+      - name: Print Permisson Log
+        if: failure()
+        run: cat permissions_log.json
+          
+    
