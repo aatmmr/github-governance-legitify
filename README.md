@@ -1,5 +1,7 @@
 # GitHub Governance: Legitify Policy Scan
 
+[![Legitify Scan (PAT)](https://github.com/aatmmr/github-governance-legitify/actions/workflows/legitify-repo-scan-pat.yml/badge.svg)](https://github.com/aatmmr/github-governance-legitify/actions/workflows/legitify-repo-scan-pat.yml)
+
 Repository to demonstrate use of [Legit-Labs Legitify](https://github.com/legit-labs/legitify) for repository governance.
 
 ## Policies
